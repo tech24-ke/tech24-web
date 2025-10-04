@@ -1,21 +1,13 @@
+// src/app/layout.tsx
 import "./globals.css";
-import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 
-export const metadata: Metadata = {
-  title: "Tech24 — Always-On Digital Power",
-  description:
-    "Websites and simple apps for Kenyan businesses. Fast delivery on Vercel with local insight.",
-  icons: { icon: "/favicon.ico" },
-};
+const inter = Inter({ subsets: ["latin"] });
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className="antialiased bg-white text-slate-800">
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className} suppressHydrationWarning>
         {children}
       </body>
     </html>

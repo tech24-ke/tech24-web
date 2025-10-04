@@ -1,3 +1,12 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* src/app/globals.css */
+@import "tailwindcss";
+
+@utility btn {
+  @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition;
+}
+@utility btn-primary {
+  @apply btn bg-indigo-600 text-white hover:bg-indigo-700;
+}
+@utility btn-outline {
+  @apply btn border border-slate-300 text-slate-800 hover:bg-slate-50;
+}
