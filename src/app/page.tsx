@@ -14,13 +14,13 @@ export default function Home() {
           description:
             "Web design, M-Pesa integration, WhatsApp CTA, and social media setup for Kenyan businesses.",
           url: "https://tech24.co.ke",
-          telephone: "+254740123456",
+          telephone: "+254748699460",
           areaServed: "KE",
           sameAs: ["https://instagram.com/tech24ke"],
         })}
       </Script>
 
-      {/* Round-robin WhatsApp linker (Joy ↔ Terry) */}
+      {/* Round-robin WhatsApp linker (Joy ↔ Terry) + optional override via data-wa */}
       <Script id="wa-round-robin" strategy="afterInteractive">
         {`
 (function(){
@@ -47,15 +47,15 @@ export default function Home() {
     return [base, utmStr ? 'UTM: '+utmStr : null].filter(Boolean).join(' | ');
   }
   function wire(el) {
-    const rep = nextRep();
     const custom = el.getAttribute('data-msg') || '';
+    const override = el.getAttribute('data-wa'); // if present, force this number
+    const rep = override ? { name: 'Team', wa: override } : nextRep();
     const msg = encodeURIComponent(buildMsg(custom));
     el.href = 'https://wa.me/' + rep.wa + '?text=' + msg;
-    el.title = 'Chat with ' + rep.name + ' on WhatsApp';
+    el.title = 'Chat on WhatsApp';
   }
   function init(){
-    const buttons = document.querySelectorAll('a.wa-rr');
-    buttons.forEach((a) => {
+    document.querySelectorAll('a.wa-rr').forEach((a) => {
       wire(a); // initial target
       a.addEventListener('click', () => wire(a), { passive: true }); // advance again on click
     });
@@ -72,7 +72,6 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-2">
-              {/* LOGO */}
               <img
                 src="/logo.png"
                 alt="Tech24 logo"
@@ -220,44 +219,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* WhatsApp CTA */}
+      {/* WhatsApp CTA (cleaned — no example card) */}
       <section id="whatsapp" className="py-16 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-start gap-10 lg:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-extrabold md:text-4xl">WhatsApp CTA — Turn Visitors Into Chats</h2>
-              <p className="mt-4 text-slate-700">
-                In Kenya, business happens on WhatsApp. We add a <span className="font-semibold">Call-to-Action (CTA)</span> button
-                that opens a chat with your pre-filled message — faster than forms and email.
-              </p>
-              <ul className="mt-6 space-y-3 text-slate-700">
-                <Bullet color="bg-blue-600" title="Chat Now:" body="A floating or header button that opens a chat instantly." />
-                <Bullet color="bg-blue-600" title="Send Order Photo:" body="Boutiques let buyers send a picture and size." />
-                <Bullet color="bg-blue-600" title="Request a Quote:" body="Trades/services capture qualified leads fast." />
-              </ul>
-              <div className="mt-8 flex flex-wrap gap-3">
-                <a
-                  href="#"
-                  data-msg="Hi Tech24! I saw your WhatsApp CTA section and want to try it."
-                  className="wa-rr inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
-                >
-                  Try the CTA
-                </a>
-                <a href="#pricing" className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold hover:border-blue-300 hover:text-blue-700">
-                  See packages
-                </a>
-              </div>
-            </div>
-
-            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] lg:p-8">
-              <h3 className="font-semibold">Example button (copy-paste)</h3>
-              <pre className="mt-3 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-slate-100 whitespace-pre-wrap break-words">
-{`<a href="#" class="wa-rr inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-white"
-   data-msg="Hi Tech24! I saw your website and need more info.">
-  Chat on WhatsApp
-</a>`}
-              </pre>
-              <p className="mt-4 text-sm text-slate-600">We can also connect the WhatsApp Business API later for automated replies and order flows.</p>
+          <div className="max-w-3xl">
+            <h2 className="text-3xl font-extrabold md:text-4xl">WhatsApp CTA — Turn Visitors Into Chats</h2>
+            <p className="mt-4 text-slate-700">
+              In Kenya, business happens on WhatsApp. We add a{" "}
+              <span className="font-semibold">Call-to-Action (CTA)</span> button
+              that opens a chat with your pre-filled message — faster than forms and email.
+            </p>
+            <ul className="mt-6 space-y-3 text-slate-700">
+              <Bullet color="bg-blue-600" title="Chat Now:" body="A floating or header button that opens a chat instantly." />
+              <Bullet color="bg-blue-600" title="Send Order Photo:" body="Boutiques let buyers send a picture and size." />
+              <Bullet color="bg-blue-600" title="Request a Quote:" body="Trades/services capture qualified leads fast." />
+            </ul>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <a
+                href="#"
+                data-msg="Hi Tech24! I saw your WhatsApp CTA section and want to try it."
+                className="wa-rr inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
+              >
+                Try the CTA
+              </a>
+              <a href="#pricing" className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold hover:border-blue-300 hover:text-blue-700">
+                See packages
+              </a>
             </div>
           </div>
         </div>
@@ -332,48 +319,38 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact */}
+      {/* Contact (simplified) */}
       <section id="contact" className="bg-slate-900 py-16 text-slate-100 md:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="grid items-center gap-10 md:grid-cols-2">
-            <div>
-              <h2 className="text-3xl font-extrabold md:text-4xl">Let’s build something great</h2>
-              <p className="mt-3 text-slate-300">Tell us what you need — we’ll reply on WhatsApp with a simple quote.</p>
-              <div className="mt-8 space-y-4 text-lg">
-                <a
-                  href="#"
-                  data-msg="Hi Tech24! I want a website quote."
-                  className="wa-rr inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white hover:bg-emerald-700"
-                >
-                  WhatsApp: 0740 123 456
-                </a>
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800">@</span>
-                  <a href="mailto:hello@tech24.co.ke" className="hover:underline">hello@tech24.co.ke</a>
-                </div>
-                <div className="flex items-center gap-2">
-                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800">IG</span>
-                  <a href="https://instagram.com/tech24ke" target="_blank" rel="noopener" className="hover:underline">@tech24ke</a>
-                </div>
-              </div>
-            </div>
+          <div className="max-w-2xl">
+            <h2 className="text-3xl font-extrabold md:text-4xl">Let’s build something great</h2>
+            <p className="mt-3 text-slate-300">
+              Tell us what you need — we’ll reply on WhatsApp with a simple quote.
+            </p>
 
-            {/* Pseudo-form (no JS handlers) */}
-            <div className="rounded-2xl bg-white/90 p-6 text-slate-800 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur md:p-8">
-              <label className="block text-sm font-medium">Your Name</label>
-              <input type="text" placeholder="John Doe" className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              <label className="mt-4 block text-sm font-medium">Business Type</label>
-              <input type="text" placeholder="Salon, Boutique, Restaurant…" className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
-              <label className="mt-4 block text-sm font-medium">What do you need?</label>
-              <textarea rows={4} placeholder="1-page site + WhatsApp CTA, or full shop with M-Pesa…" className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+            <div className="mt-8 space-y-4 text-lg">
+              {/* This button ALWAYS goes to Terry (Kenya) */}
               <a
                 href="#"
-                data-msg="Hi Tech24! I need a quote for a website with M-Pesa and WhatsApp."
-                className="wa-rr mt-6 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700"
+                data-wa="254748699460"
+                data-msg="Hi Tech24! I want a website quote."
+                className="wa-rr inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white hover:bg-emerald-700"
               >
-                Send via WhatsApp
+                WhatsApp: 0748 699 460
               </a>
-              <p className="mt-3 text-xs text-slate-500">Submitting opens WhatsApp with your message. No data stored on this site.</p>
+
+              <div className="flex items-center gap-2">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800">@</span>
+                <a href="mailto:hello@tech24.co.ke" className="hover:underline">hello@tech24.co.ke</a>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800">IG</span>
+                <a href="https://instagram.com/tech24ke" target="_blank" rel="noopener" className="hover:underline">@tech24ke</a>
+              </div>
+
+              <p className="pt-2 text-xs text-slate-400">
+                Clicking WhatsApp opens a chat with a pre-filled message.
+              </p>
             </div>
           </div>
         </div>
