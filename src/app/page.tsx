@@ -25,10 +25,13 @@ export default function Home() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex h-16 items-center justify-between">
             <a href="#home" className="flex items-center gap-2">
-              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold">
-                T24
-              </span>
-              <span className="font-semibold">Tech24.co.ke</span>
+              {/* LOGO */}
+              <img
+                src="/logo.png"
+                alt="Tech24 logo"
+                className="h-8 w-8 rounded-lg object-contain"
+              />
+              <span className="font-semibold text-slate-900">Tech24.co.ke</span>
             </a>
             <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
               <a href="#services" className="hover:text-blue-700">Services</a>
@@ -415,14 +418,10 @@ function PricingCard({
       ) : null}
       <h3 className="mt-3 text-xl font-bold">{title}</h3>
       <p className="mt-1 text-slate-600">
-        {title === "Starter Site"
-          ? "Small businesses & individuals"
-          : title === "Social Launch"
-          ? "Start on Facebook, Instagram & TikTok"
-          : title.includes("Combo")
-          ? "Complete online presence"
-          : title === "Pro Business"
-          ? "SMEs & shops ready to grow"
+        {title === "Starter Site" ? "Small businesses & individuals"
+          : title === "Social Launch" ? "Start on Facebook, Instagram & TikTok"
+          : title.includes("Combo") ? "Complete online presence"
+          : title === "Pro Business" ? "SMEs & shops ready to grow"
           : "Full online shop"}
       </p>
       <p className="mt-4 text-3xl font-extrabold">
