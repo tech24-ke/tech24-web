@@ -1,6 +1,7 @@
 /* src/app/globals.css */
 @import "tailwindcss";
 
+/* Utility classes you already had */
 @utility btn {
   @apply inline-flex items-center justify-center rounded-xl px-5 py-3 text-sm font-semibold transition;
 }
@@ -10,5 +11,16 @@
 @utility btn-outline {
   @apply btn border border-slate-300 text-slate-800 hover:bg-slate-50;
 }
+
+/* Keep your smooth scroll + base colors */
 html { scroll-behavior: smooth; }
 body { color: #0f172a; background: #fff; }
+
+/* ---- Mobile horizontal scroll fix (Tailwind-friendly) ---- */
+@layer base {
+  html, body { @apply max-w-full overflow-x-hidden; }
+  /* Prevent any media from pushing the viewport */
+  img, video, iframe { @apply max-w-full h-auto block; }
+  /* Long code/pre cannot overflow on small screens */
+  pre, code { @apply whitespace-pre-wrap break-words; }
+}

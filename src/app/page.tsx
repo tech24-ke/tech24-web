@@ -20,6 +20,53 @@ export default function Home() {
         })}
       </Script>
 
+      {/* Round-robin WhatsApp linker (Joy ↔ Terry) */}
+      <Script id="wa-round-robin" strategy="afterInteractive">
+        {`
+(function(){
+  // Reps: full international, no '+' or spaces
+  const reps = [
+    { name: 'Joy',   wa: '32465603546'  },
+    { name: 'Terry', wa: '254748699460' }
+  ];
+  const BRAND = 'Tech24';
+  const KEY = 'wa_rr_index_v1';
+
+  function nextRep() {
+    const i = parseInt(localStorage.getItem(KEY) || '0', 10);
+    const rep = reps[i % reps.length];
+    localStorage.setItem(KEY, String(i + 1));
+    return rep;
+  }
+  function buildMsg(custom) {
+    const utm = new URLSearchParams(location.search);
+    const utmStr = [...utm.entries()].map(([k,v]) => k+'='+v).join('&');
+    const base = (custom && custom.trim().length)
+      ? custom.trim()
+      : \`Hi \${BRAND}! I'm on "\${document.title}" | URL: \${location.href}\`;
+    return [base, utmStr ? 'UTM: '+utmStr : null].filter(Boolean).join(' | ');
+  }
+  function wire(el) {
+    const rep = nextRep();
+    const custom = el.getAttribute('data-msg') || '';
+    const msg = encodeURIComponent(buildMsg(custom));
+    el.href = 'https://wa.me/' + rep.wa + '?text=' + msg;
+    el.title = 'Chat with ' + rep.name + ' on WhatsApp';
+  }
+  function init(){
+    const buttons = document.querySelectorAll('a.wa-rr');
+    buttons.forEach((a) => {
+      wire(a); // initial target
+      a.addEventListener('click', () => wire(a), { passive: true }); // advance again on click
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else { init(); }
+})();
+        `}
+      </Script>
+
       {/* Header */}
       <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/90 backdrop-blur">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -40,8 +87,9 @@ export default function Home() {
               <a href="#pricing" className="hover:text-blue-700">Packages</a>
               <a href="#contact" className="hover:text-blue-700">Contact</a>
               <a
-                href="https://wa.me/254740123456?text=Hi!%20I%20saw%20your%20website%20and%20need%20more%20info"
-                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
+                href="#"
+                data-msg="Hi Tech24! I saw your website and need more info."
+                className="wa-rr inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
               >
                 WhatsApp
               </a>
@@ -73,8 +121,9 @@ export default function Home() {
                   See Packages
                 </a>
                 <a
-                  href="https://wa.me/254740123456?text=Hi!%20I%20want%20a%20website%20quote"
-                  className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold hover:border-blue-300 hover:text-blue-700"
+                  href="#"
+                  data-msg="Hi Tech24! I want a website quote."
+                  className="wa-rr inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold hover:border-blue-300 hover:text-blue-700"
                 >
                   Chat on WhatsApp
                 </a>
@@ -188,8 +237,9 @@ export default function Home() {
               </ul>
               <div className="mt-8 flex flex-wrap gap-3">
                 <a
-                  href="https://wa.me/254740123456?text=Hi!%20I%20saw%20your%20website%20and%20need%20more%20info"
-                  className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
+                  href="#"
+                  data-msg="Hi Tech24! I saw your WhatsApp CTA section and want to try it."
+                  className="wa-rr inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
                 >
                   Try the CTA
                 </a>
@@ -201,8 +251,9 @@ export default function Home() {
 
             <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] lg:p-8">
               <h3 className="font-semibold">Example button (copy-paste)</h3>
-              <pre className="mt-3 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-slate-100">
-{`<a href="https://wa.me/254740123456?text=Hi!%20I%20saw%20your%20website%20and%20need%20more%20info" class="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-white">
+              <pre className="mt-3 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-slate-100 whitespace-pre-wrap break-words">
+{`<a href="#" class="wa-rr inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-white"
+   data-msg="Hi Tech24! I saw your website and need more info.">
   Chat on WhatsApp
 </a>`}
               </pre>
@@ -223,14 +274,14 @@ export default function Home() {
               title="Starter Site"
               price="KES 4,999"
               items={["1-page landing", "WhatsApp CTA", "Secure hosting", "Mobile-friendly"]}
-              ctaHref="https://wa.me/254740123456?text=I%20want%20the%20Starter%20Site%20package%20(KES%204,999)"
+              ctaMsg="I want the Starter Site package (KES 4,999)."
               ctaText="Get Starter"
             />
             <PricingCard
               title="Social Launch"
               price="KES 5,999"
               items={["FB/IG/TikTok setup", "Bio link page", "WhatsApp CTA", "Basic brand kit"]}
-              ctaHref="https://wa.me/254740123456?text=I%20want%20the%20Social%20Launch%20package%20(KES%205,999)"
+              ctaMsg="I want the Social Launch package (KES 5,999)."
               ctaText="Start Social"
             />
             <PricingCard
@@ -240,21 +291,21 @@ export default function Home() {
               price="KES 8,999"
               sub="(save 2,000)"
               items={["Website + bio link page", "FB/IG/TikTok setup", "WhatsApp CTA everywhere", "Domain setup & SSL"]}
-              ctaHref="https://wa.me/254740123456?text=I%20want%20the%20Combo%20Starter%20%2B%20Social%20package%20(KES%208,999)"
+              ctaMsg="I want the Combo Starter + Social package (KES 8,999)."
               ctaText="Get the Combo"
             />
             <PricingCard
               title="Pro Business"
               price="KES 9,999"
               items={["Up to 5 pages", "M-Pesa button", "SEO setup", "Analytics"]}
-              ctaHref="https://wa.me/254740123456?text=I%20want%20the%20Pro%20Business%20package%20(KES%209,999)"
+              ctaMsg="I want the Pro Business package (KES 9,999)."
               ctaText="Go Pro"
             />
             <PricingCard
               title="E-Commerce"
               price="From KES 14,999"
               items={["Woo/Shopify or custom", "M-Pesa checkout", "WhatsApp chat", "Admin panel"]}
-              ctaHref="https://wa.me/254740123456?text=I%20need%20an%20E-Commerce%20quote"
+              ctaMsg="I need an E-Commerce quote."
               ctaText="Request Quote"
             />
           </div>
@@ -290,8 +341,9 @@ export default function Home() {
               <p className="mt-3 text-slate-300">Tell us what you need — we’ll reply on WhatsApp with a simple quote.</p>
               <div className="mt-8 space-y-4 text-lg">
                 <a
-                  href="https://wa.me/254740123456?text=Hi!%20I%20want%20a%20website%20quote"
-                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white hover:bg-emerald-700"
+                  href="#"
+                  data-msg="Hi Tech24! I want a website quote."
+                  className="wa-rr inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white hover:bg-emerald-700"
                 >
                   WhatsApp: 0740 123 456
                 </a>
@@ -315,8 +367,9 @@ export default function Home() {
               <label className="mt-4 block text-sm font-medium">What do you need?</label>
               <textarea rows={4} placeholder="1-page site + WhatsApp CTA, or full shop with M-Pesa…" className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
               <a
-                href="https://wa.me/254740123456?text=Hi!%20I%20need%20a%20quote%20for%20a%20website%20with%20M-Pesa%20and%20WhatsApp"
-                className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700"
+                href="#"
+                data-msg="Hi Tech24! I need a quote for a website with M-Pesa and WhatsApp."
+                className="wa-rr mt-6 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700"
               >
                 Send via WhatsApp
               </a>
@@ -397,7 +450,7 @@ function PricingCard({
   price,
   sub,
   items,
-  ctaHref,
+  ctaMsg,
   ctaText,
 }: {
   badge?: string;
@@ -406,7 +459,7 @@ function PricingCard({
   price: string;
   sub?: string;
   items: string[];
-  ctaHref: string;
+  ctaMsg: string;
   ctaText: string;
 }) {
   return (
@@ -430,7 +483,11 @@ function PricingCard({
       <ul className="mt-4 space-y-2 text-sm">
         {items.map((x) => <li key={x}>{x}</li>)}
       </ul>
-      <a href={ctaHref} className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700">
+      <a
+        href="#"
+        data-msg={ctaMsg}
+        className="wa-rr mt-6 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700"
+      >
         {ctaText}
       </a>
     </div>
