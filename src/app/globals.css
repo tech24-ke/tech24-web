@@ -10,3 +10,5 @@
 @utility btn-outline {
   @apply btn border border-slate-300 text-slate-800 hover:bg-slate-50;
 }
+html { scroll-behavior: smooth; }
+body { color: #0f172a; background: #fff; }
