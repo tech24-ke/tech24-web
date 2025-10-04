@@ -1,103 +1,171 @@
-import Image from "next/image";
+import Link from "next/link";
+
+const services = [
+  { title: "Business Card Sites", desc: "Clean one-pagers hosted on Vercel." },
+  { title: "Full Websites", desc: "3–5 pages, SEO basics, analytics." },
+  { title: "Simple Apps", desc: "Booking, menus, events, portfolios." },
+  { title: "Brand & Design", desc: "Logos, color systems, assets." },
+  { title: "Care & Support", desc: "Updates, backups, uptime checks." },
+];
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const year = new Date().getFullYear();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <main className="min-h-screen">
+      {/* NAV */}
+      <header className="border-b">
+        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <div className="h-8 w-8 rounded-xl border" />
+            <span className="font-semibold">Tech24</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-6 text-sm">
+            <a href="#services">Services</a>
+            <a href="#templates">Templates</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#contact" className="px-3 py-1.5 rounded-lg border">Contact</a>
+          </nav>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </header>
+
+      {/* HERO */}
+      <section className="bg-gradient-to-b from-slate-50 to-white">
+        <div className="mx-auto max-w-6xl px-4 py-20 text-center">
+          <h1 className="text-4xl md:text-6xl font-bold tracking-tight">
+            Always-On Digital Power for Kenyan Business
+          </h1>
+          <p className="mt-5 text-slate-600 max-w-2xl mx-auto">
+            We build fast websites and simple apps—hosted on Vercel, integrated
+            with Kenya-friendly tools, and delivered quickly.
+          </p>
+          <div className="mt-8 flex items-center justify-center gap-3">
+            <a href="#pricing" className="px-5 py-3 rounded-xl bg-black text-white">
+              Launch from KSh 4,999
+            </a>
+            <a href="#contact" className="px-5 py-3 rounded-xl border">Talk to us</a>
+          </div>
+        </div>
+      </section>
+
+      {/* SERVICES */}
+      <section id="services" className="py-16 border-t">
+        <div className="mx-auto max-w-6xl px-4">
+          <h2 className="text-2xl md:text-3xl font-semibold">What we do</h2>
+          <div className="mt-8 grid md:grid-cols-3 gap-6">
+            {services.map((s) => (
+              <div key={s.title} className="rounded-2xl border p-6 hover:shadow-sm transition">
+                <h3 className="font-semibold">{s.title}</h3>
+                <p className="text-sm text-slate-600 mt-2">{s.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* TEMPLATES */}
+      <section id="templates" className="py-16 border-t">
+        <div className="mx-auto max-w-6xl px-4">
+          <div className="flex items-end justify-between gap-4">
+            <h2 className="text-2xl md:text-3xl font-semibold">Ready-to-ship Templates</h2>
+            <span className="text-sm text-slate-500">5 available now · more coming</span>
+          </div>
+          <div className="mt-8 grid md:grid-cols-3 gap-6">
+            {[
+              { name: "Landing Default", url: "https://landing-default.tech24.co.ke" },
+              { name: "Portfolio Site", url: "https://portfolio.tech24.co.ke" },
+              { name: "Restaurant Site", url: "https://restaurant.tech24.co.ke" },
+            ].map((t) => (
+              <a
+                key={t.name}
+                className="rounded-2xl border p-6 hover:shadow-sm transition"
+                href={t.url}
+                target="_blank"
+              >
+                <div className="h-32 rounded-xl bg-slate-100 border mb-4" />
+                <div className="font-medium">{t.name}</div>
+                <div className="text-xs text-slate-500">Live demo</div>
+              </a>
+            ))}
+          </div>
+          <p className="text-sm text-slate-500 mt-3">
+            Want something different? We tailor a template to your brand and content in days.
+          </p>
+        </div>
+      </section>
+
+      {/* PRICING */}
+      <section id="pricing" className="py-16 border-t bg-slate-50/60">
+        <div className="mx-auto max-w-6xl px-4">
+          <h2 className="text-2xl md:text-3xl font-semibold">Transparent pricing</h2>
+          <div className="mt-8 grid md:grid-cols-3 gap-6">
+            <div className="rounded-2xl border bg-white p-6">
+              <div className="text-sm font-semibold text-slate-500">Promo</div>
+              <div className="mt-2 text-3xl font-bold">KSh 4,999</div>
+              <div className="text-sm text-slate-500">One-page business card site</div>
+              <ul className="mt-4 text-sm space-y-2">
+                <li>• Template setup & branding</li>
+                <li>• 1 revision round</li>
+                <li>• Free SSL, deployed on Vercel</li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border bg-white p-6">
+              <div className="text-sm font-semibold text-slate-500">Standard</div>
+              <div className="mt-2 text-3xl font-bold">KSh 14,999</div>
+              <div className="text-sm text-slate-500">3–5 pages + basic SEO</div>
+              <ul className="mt-4 text-sm space-y-2">
+                <li>• Home, About, Services, Contact</li>
+                <li>• WhatsApp & Maps integration</li>
+                <li>• Google Analytics + SEO basics</li>
+              </ul>
+            </div>
+
+            <div className="rounded-2xl border bg-white p-6">
+              <div className="text-sm font-semibold text-slate-500">App Starter</div>
+              <div className="mt-2 text-3xl font-bold">From KSh 29,999</div>
+              <div className="text-sm text-slate-500">Simple booking / menu / events</div>
+              <ul className="mt-4 text-sm space-y-2">
+                <li>• Choose a Tech24 template</li>
+                <li>• Basic admin + email/WhatsApp</li>
+                <li>• Optional MPesa integration</li>
+              </ul>
+            </div>
+          </div>
+          <p className="text-xs text-slate-500 mt-3">
+            *Domain & email optional add-ons. You already own tech24.co.ke—great.
+          </p>
+        </div>
+      </section>
+
+      {/* CONTACT */}
+      <section id="contact" className="py-16 border-t">
+        <div className="mx-auto max-w-3xl px-4 text-center">
+          <h2 className="text-2xl md:text-3xl font-semibold">Ready to build?</h2>
+          <p className="text-slate-600 mt-3">Tell us what you need and we’ll reply within 24 hours.</p>
+          <div className="mt-6 flex flex-col sm:flex-row gap-3 justify-center">
+            <a className="px-5 py-3 rounded-xl border" href="mailto:hello@tech24.co.ke">
+              Email hello@tech24.co.ke
+            </a>
+            <Link
+              className="px-5 py-3 rounded-xl bg-black text-white"
+              href="https://wa.me/2547XXXXXXXX"
+              target="_blank"
+            >
+              WhatsApp us
+            </Link>
+          </div>
+          <p className="text-xs text-slate-500 mt-3">Prefer a call? +254 7xx xxx xxx</p>
+        </div>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t">
+        <div className="mx-auto max-w-6xl px-4 py-10 text-sm text-slate-500 flex flex-col md:flex-row gap-2 md:items-center md:justify-between">
+          <span>© {year} Tech24 — Nairobi, Kenya</span>
+          <span>Built on Vercel</span>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
