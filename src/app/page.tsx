@@ -1,341 +1,439 @@
-// src/app/page.tsx
-export default function Page() {
+import Script from "next/script";
+
+export default function Home() {
+  const year = new Date().getFullYear();
+
   return (
-    <main className="min-h-screen bg-white text-slate-900">
-      {/* Header / Nav */}
-      <header className="sticky top-0 z-40 w-full border-b border-slate-200 bg-white/80 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3">
-          <a href="#" className="flex items-center gap-2 font-extrabold">
-            <span className="inline-block h-6 w-6 rounded-full bg-indigo-600" />
-            <span>Tech24</span>
-          </a>
-          <nav className="hidden gap-6 text-sm font-medium md:flex">
-            <a href="#services" className="text-slate-700 hover:text-slate-900">Services</a>
-            <a href="#templates" className="text-slate-700 hover:text-slate-900">Templates</a>
-            <a href="#pricing" className="text-slate-700 hover:text-slate-900">Pricing</a>
-            <a href="#contact" className="text-slate-700 hover:text-slate-900">Contact</a>
-          </nav>
-          <a
-            href="#contact"
-            className="rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 md:inline-flex"
-          >
-            Talk to us
-          </a>
+    <>
+      {/* JSON-LD for SEO */}
+      <Script id="ld-localbusiness" type="application/ld+json">
+        {JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "LocalBusiness",
+          name: "Tech24.co.ke",
+          description:
+            "Web design, M-Pesa integration, WhatsApp CTA, and social media setup for Kenyan businesses.",
+          url: "https://tech24.co.ke",
+          telephone: "+254740123456",
+          areaServed: "KE",
+          sameAs: ["https://instagram.com/tech24ke"],
+        })}
+      </Script>
+
+      {/* Header */}
+      <header className="sticky top-0 z-50 border-b border-slate-200/60 bg-white/90 backdrop-blur">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="flex h-16 items-center justify-between">
+            <a href="#home" className="flex items-center gap-2">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-blue-600 text-white font-bold">
+                T24
+              </span>
+              <span className="font-semibold">Tech24.co.ke</span>
+            </a>
+            <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
+              <a href="#services" className="hover:text-blue-700">Services</a>
+              <a href="#mpesa" className="hover:text-blue-700">M-Pesa</a>
+              <a href="#whatsapp" className="hover:text-blue-700">WhatsApp CTA</a>
+              <a href="#pricing" className="hover:text-blue-700">Packages</a>
+              <a href="#contact" className="hover:text-blue-700">Contact</a>
+              <a
+                href="https://wa.me/254740123456?text=Hi!%20I%20saw%20your%20website%20and%20need%20more%20info"
+                className="inline-flex items-center gap-2 rounded-xl bg-blue-600 px-4 py-2 text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
+              >
+                WhatsApp
+              </a>
+            </nav>
+          </div>
         </div>
       </header>
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
-        <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_80%_at_50%_-20%,#818cf826,transparent_70%)]" />
-        <div className="mx-auto grid max-w-6xl gap-8 px-4 py-16 md:grid-cols-2 md:py-24">
-          <div>
-            <h1 className="text-4xl font-extrabold leading-tight tracking-tight md:text-6xl">
-              Always-On Digital Power for <span className="text-indigo-600">Kenyan</span> Business
-            </h1>
-            <p className="mt-4 text-lg text-slate-600 md:text-xl">
-              We build fast websites and simple apps—hosted on Vercel, integrated with
-              Kenya-friendly tools, and delivered quickly.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href="#pricing"
-                className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-white shadow-sm hover:bg-indigo-700"
-              >
-                Launch from KSh 4,999
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center rounded-xl border border-slate-300 px-5 py-3 text-slate-800 hover:bg-slate-50"
-              >
-                Book a call
-              </a>
-            </div>
-            <div className="mt-6 flex items-center gap-4 text-sm text-slate-500">
-              <span>⚡ Hosted on Vercel</span>
-              <span>•</span>
-              <span>🛠️ Local integrations (M-Pesa, WhatsApp)</span>
-            </div>
-          </div>
-          <div className="rounded-2xl border border-slate-200 bg-white p-4 shadow-sm">
-            <div className="aspect-[16/10] w-full rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 p-6 text-white">
-              <div className="text-lg font-semibold">Live Preview</div>
-              <p className="mt-1 text-sm opacity-90">
-                Clean, responsive, lightning-fast pages that convert.
+      <section id="home" className="relative overflow-hidden">
+        <div className="absolute inset-0 -z-10 bg-gradient-to-br from-blue-50 via-white to-orange-50" />
+        <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 md:py-24 lg:px-8">
+          <div className="grid items-center gap-10 md:grid-cols-2 md:gap-16">
+            <div>
+              <h1 className="text-4xl font-extrabold leading-tight text-slate-900 md:text-5xl">
+                Digital Made Simple for Kenyan Businesses
+              </h1>
+              <p className="mt-5 text-lg text-slate-700">
+                We build fast, modern websites with{" "}
+                <span className="font-semibold">M-Pesa</span> and{" "}
+                <span className="font-semibold">WhatsApp</span> built-in.
+                Start small, scale anytime.
               </p>
-              <div className="mt-6 grid grid-cols-3 gap-3 text-center text-xs">
-                <div className="rounded-lg bg-white/15 p-3">SEO basics</div>
-                <div className="rounded-lg bg-white/15 p-3">Analytics</div>
-                <div className="rounded-lg bg-white/15 p-3">Forms</div>
-                <div className="rounded-lg bg-white/15 p-3">Blog</div>
-                <div className="rounded-lg bg-white/15 p-3">WhatsApp CTA</div>
-                <div className="rounded-lg bg-white/15 p-3">M-Pesa</div>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="#pricing"
+                  className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
+                >
+                  See Packages
+                </a>
+                <a
+                  href="https://wa.me/254740123456?text=Hi!%20I%20want%20a%20website%20quote"
+                  className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold hover:border-blue-300 hover:text-blue-700"
+                >
+                  Chat on WhatsApp
+                </a>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* What we do */}
-      <section id="services" className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">What we do</h2>
-        <p className="mt-2 max-w-2xl text-slate-600">
-          Pick a starting point—everything is customisable and can grow with your business.
-        </p>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {[
-            {
-              title: "Business Card Sites",
-              desc: "Clean one-pagers hosted on Vercel.",
-              items: ["Hero + About + Contact", "WhatsApp CTA", "SEO basics"],
-            },
-            {
-              title: "Full Websites",
-              desc: "3–5 pages, SEO basics, analytics.",
-              items: ["Home, Services, About, Contact", "Blog/News", "Forms to email/WhatsApp"],
-            },
-            {
-              title: "Simple Apps",
-              desc: "Booking, menus, events, portfolios.",
-              items: ["Auth (optional)", "Dashboards", "Payments via M-Pesa"],
-            },
-          ].map((c) => (
-            <div
-              key={c.title}
-              className="rounded-2xl border border-slate-200 p-6 shadow-sm transition hover:shadow-md"
-            >
-              <h3 className="text-xl font-bold">{c.title}</h3>
-              <p className="mt-1 text-slate-600">{c.desc}</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                {c.items.map((i) => (
-                  <li key={i} className="flex items-start gap-2">
-                    <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-indigo-600" />
-                    {i}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Templates */}
-      <section id="templates" className="mx-auto max-w-6xl px-4 py-16">
-        <div className="flex items-end justify-between">
-          <div>
-            <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">Templates</h2>
-            <p className="mt-2 max-w-2xl text-slate-600">
-              Start from a proven layout, then we tailor it to your brand.
-            </p>
-          </div>
-          <a href="#contact" className="hidden rounded-xl bg-slate-900 px-4 py-2 text-sm font-semibold text-white hover:bg-slate-800 md:inline-flex">
-            See demos
-          </a>
-        </div>
-
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {[
-            { name: "One-Pager", tag: "Launch fast", color: "from-sky-500 to-cyan-500" },
-            { name: "Service Site", tag: "Best seller", color: "from-indigo-500 to-violet-600" },
-            { name: "Portfolio", tag: "Clean & visual", color: "from-rose-500 to-orange-500" },
-          ].map((t) => (
-            <div key={t.name} className="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-              <div className={`aspect-[16/10] w-full bg-gradient-to-br ${t.color}`} />
-              <div className="p-5">
-                <div className="flex items-center justify-between">
-                  <h3 className="text-lg font-bold">{t.name}</h3>
-                  <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-medium text-slate-700">
-                    {t.tag}
-                  </span>
+              <div className="mt-6 flex items-center gap-4 text-sm text-slate-600">
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-emerald-500" /> Live in 48 hours
                 </div>
-                <p className="mt-2 text-sm text-slate-600">
-                  Mobile-first, blazing fast, and SEO-ready.
-                </p>
-                <div className="mt-4 flex gap-2">
-                  <a href="#contact" className="inline-flex items-center rounded-lg bg-indigo-600 px-3 py-2 text-xs font-semibold text-white hover:bg-indigo-700">
-                    Preview
-                  </a>
-                  <a href="#pricing" className="inline-flex items-center rounded-lg border border-slate-300 px-3 py-2 text-xs font-semibold text-slate-800 hover:bg-slate-50">
-                    Get this
-                  </a>
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-blue-500" /> .co.ke domains
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="h-2.5 w-2.5 rounded-full bg-orange-500" /> Secure hosting
                 </div>
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* Features */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="rounded-3xl bg-slate-50 p-8 md:p-12">
-          <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">Why Tech24</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                title: "Performance first",
-                desc: "Next.js + Vercel for instant load times and great Lighthouse scores.",
-              },
-              {
-                title: "Local payments",
-                desc: "M-Pesa checkout and STK push where it makes sense.",
-              },
-              {
-                title: "Own your data",
-                desc: "Analytics, leads and content stay with you—export anytime.",
-              },
-            ].map((f) => (
-              <div key={f.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <div className="mb-3 h-8 w-8 rounded-lg bg-indigo-600" />
-                <h3 className="text-lg font-bold">{f.title}</h3>
-                <p className="mt-1 text-sm text-slate-600">{f.desc}</p>
+            <div className="relative">
+              <div className="rounded-2xl bg-white/85 p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur md:p-8">
+                <div className="grid grid-cols-2 gap-4 text-sm">
+                  <Card title="M-Pesa Checkout" desc="Add Paybill/Till or STK Push to your site or app." />
+                  <Card title="WhatsApp CTA" desc="Turn visitors into chats, not missed forms." />
+                  <Card title="Social Launch" desc="Setup FB/IG/TikTok + link-in-bio page." />
+                  <Card title="Fast Delivery" desc="Most projects go live within 48 hours." />
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing */}
-      <section id="pricing" className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">Pricing</h2>
-        <p className="mt-2 max-w-2xl text-slate-600">
-          Transparent packages. Pay once to launch, optional monthly care plan.
-        </p>
+      {/* Services */}
+      <section id="services" className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Header
+            title="Our Services"
+            subtitle="Websites, e-commerce, branding, and social setup — we handle everything end-to-end."
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Service title="Business Websites" desc="Clean, mobile-friendly pages that convert visitors into customers." />
+            <Service title="E-Commerce with M-Pesa" desc="WooCommerce/Shopify or custom shops with instant M-Pesa confirmation." />
+            <Service title="Web Apps & Dashboards" desc="Custom tools and portals for operations, orders, and reporting." />
+            <Service title="Branding & Logos" desc="Simple, memorable identities with social-ready assets." />
+            <Service title="Social Media & WhatsApp" desc="WhatsApp CTA buttons, share links, and page setup." />
+            <Service title="Domain & Hosting" desc="We register, configure, secure, and maintain your domain." />
+          </div>
+        </div>
+      </section>
 
-        <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {[
-            {
-              name: "Launch",
-              price: "KSh 4,999",
-              blurb: "One-pager, perfect for starters.",
-              features: ["Hero + About + Contact", "WhatsApp CTA", "Basic SEO"],
-              cta: "Get started",
-              highlight: false,
-            },
-            {
-              name: "Business",
-              price: "KSh 19,999",
-              blurb: "Full site (3–5 pages).",
-              features: ["Pages & Blog", "Forms → Email/WhatsApp", "Analytics & SEO"],
-              cta: "Launch Business",
-              highlight: true,
-            },
-            {
-              name: "App Lite",
-              price: "KSh 39,999",
-              blurb: "Simple app or booking.",
-              features: ["Auth (optional)", "Dashboards", "M-Pesa ready"],
-              cta: "Start App",
-              highlight: false,
-            },
-          ].map((p) => (
-            <div
-              key={p.name}
-              className={`rounded-2xl border p-6 shadow-sm ${
-                p.highlight ? "border-indigo-300 ring-1 ring-indigo-200" : "border-slate-200"
-              }`}
-            >
-              <h3 className="text-lg font-bold">{p.name}</h3>
-              <div className="mt-2 text-3xl font-extrabold">{p.price}</div>
-              <p className="mt-1 text-sm text-slate-600">{p.blurb}</p>
-              <ul className="mt-4 space-y-2 text-sm text-slate-700">
-                {p.features.map((f) => (
-                  <li key={f} className="flex items-start gap-2">
-                    <span className="mt-1 inline-block h-1.5 w-1.5 rounded-full bg-indigo-600" />
-                    {f}
-                  </li>
-                ))}
+      {/* M-Pesa */}
+      <section id="mpesa" className="bg-slate-50 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-start gap-10 lg:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-extrabold md:text-4xl">M-Pesa Integrations — Simple, Local, Reliable</h2>
+              <p className="mt-4 text-slate-700">
+                Let customers pay you instantly from their phones. We connect your website or app to Safaricom’s Daraja API,
+                Paybill/Till, or ready-made plugins.
+              </p>
+              <ul className="mt-6 space-y-3 text-slate-700">
+                <Bullet color="bg-emerald-500" title="Online Shop:" body="“Pay via M-Pesa” at checkout with auto confirmation." />
+                <Bullet color="bg-emerald-500" title="Service Booking:" body="Clients pay a deposit before confirming an appointment." />
+                <Bullet color="bg-emerald-500" title="Donations/Fundraisers:" body="Accept contributions via Paybill or Till." />
+                <Bullet color="bg-emerald-500" title="In-App Payments:" body="Launch STK Push directly from mobile or web apps." />
               </ul>
-              <a
-                href="#contact"
-                className={`mt-6 inline-flex w-full items-center justify-center rounded-xl px-4 py-2 text-sm font-semibold ${
-                  p.highlight
-                    ? "bg-indigo-600 text-white hover:bg-indigo-700"
-                    : "border border-slate-300 text-slate-800 hover:bg-slate-50"
-                }`}
-              >
-                {p.cta}
-              </a>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a href="#contact" className="inline-flex items-center rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-emerald-700">
+                  Ask about M-Pesa
+                </a>
+                <a href="#pricing" className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold hover:border-emerald-300 hover:text-emerald-700">
+                  See packages
+                </a>
+              </div>
             </div>
-          ))}
-        </div>
 
-        <p className="mt-4 text-center text-sm text-slate-500">
-          Need hosting & updates? Care plan from KSh 1,499/month.
-        </p>
-      </section>
-
-      {/* Social proof */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <div className="rounded-3xl border border-slate-200 bg-white p-8 shadow-sm md:p-12">
-          <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">Loved by small teams</h2>
-          <div className="mt-6 grid gap-6 md:grid-cols-3">
-            {[
-              "“Fast delivery and clean design. Our WhatsApp leads doubled.”",
-              "“Payment links + blog in one week. Exactly what we needed.”",
-              "“They handled SEO and analytics—now we can focus on sales.”",
-            ].map((q, i) => (
-              <blockquote key={i} className="rounded-2xl bg-slate-50 p-6 text-slate-700">
-                {q}
-              </blockquote>
-            ))}
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] lg:p-8">
+              <div className="flex items-center gap-3">
+                <div className="grid h-10 w-10 place-items-center rounded-xl bg-emerald-100 font-bold text-emerald-700">M</div>
+                <div>
+                  <p className="font-semibold">How it works (STK Push)</p>
+                  <p className="text-sm text-slate-600">Customer enters phone → receives M-Pesa prompt → confirms → your site updates instantly.</p>
+                </div>
+              </div>
+              <hr className="my-4" />
+              <ol className="list-decimal space-y-2 pl-5 text-sm text-slate-700">
+                <li>Customer taps <span className="font-medium">Pay via M-Pesa</span> on checkout.</li>
+                <li>We send an <span className="font-medium">STK Push</span> to their phone.</li>
+                <li>They confirm with PIN. Payment is recorded immediately.</li>
+                <li>Your dashboard shows the order as <span className="font-medium">Paid</span>.</li>
+              </ol>
+              <p className="mt-4 text-xs text-slate-500">Supports Paybill/Till, C2B/B2C flows, and order reconciliation.</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* FAQ */}
-      <section className="mx-auto max-w-6xl px-4 py-16">
-        <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">FAQ</h2>
-        <div className="mt-6 grid gap-6 md:grid-cols-2">
-          {[
-            ["How fast can we launch?", "Most one-pagers go live within 3–7 days once content is ready."],
-            ["Do you write copy?", "Yes—light copy help is included. We can also translate to Swahili if needed."],
-            ["What about domain & email?", "We connect your domain and set up professional email routing if required."],
-            ["Can we grow later?", "Absolutely. Add pages, a blog, or simple app features as you scale."],
-          ].map(([q, a]) => (
-            <div key={q} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-              <div className="font-semibold">{q}</div>
-              <div className="mt-1 text-sm text-slate-600">{a}</div>
+      {/* WhatsApp CTA */}
+      <section id="whatsapp" className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-start gap-10 lg:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-extrabold md:text-4xl">WhatsApp CTA — Turn Visitors Into Chats</h2>
+              <p className="mt-4 text-slate-700">
+                In Kenya, business happens on WhatsApp. We add a <span className="font-semibold">Call-to-Action (CTA)</span> button
+                that opens a chat with your pre-filled message — faster than forms and email.
+              </p>
+              <ul className="mt-6 space-y-3 text-slate-700">
+                <Bullet color="bg-blue-600" title="Chat Now:" body="A floating or header button that opens a chat instantly." />
+                <Bullet color="bg-blue-600" title="Send Order Photo:" body="Boutiques let buyers send a picture and size." />
+                <Bullet color="bg-blue-600" title="Request a Quote:" body="Trades/services capture qualified leads fast." />
+              </ul>
+              <div className="mt-8 flex flex-wrap gap-3">
+                <a
+                  href="https://wa.me/254740123456?text=Hi!%20I%20saw%20your%20website%20and%20need%20more%20info"
+                  className="inline-flex items-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white shadow-[0_10px_30px_rgba(0,0,0,0.08)] hover:bg-blue-700"
+                >
+                  Try the CTA
+                </a>
+                <a href="#pricing" className="inline-flex items-center rounded-xl border border-slate-300 bg-white px-5 py-3 font-semibold hover:border-blue-300 hover:text-blue-700">
+                  See packages
+                </a>
+              </div>
             </div>
-          ))}
+
+            <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] lg:p-8">
+              <h3 className="font-semibold">Example button (copy-paste)</h3>
+              <pre className="mt-3 overflow-x-auto rounded-xl bg-slate-900 p-4 text-sm text-slate-100">
+{`<a href="https://wa.me/254740123456?text=Hi!%20I%20saw%20your%20website%20and%20need%20more%20info" class="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-4 py-2 text-white">
+  Chat on WhatsApp
+</a>`}
+              </pre>
+              <p className="mt-4 text-sm text-slate-600">We can also connect the WhatsApp Business API later for automated replies and order flows.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Packages */}
+      <section id="pricing" className="bg-slate-50 py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Header title="Our Packages" subtitle="Start small, grow fast. Transparent pricing, no hidden fees." />
+
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <PricingCard
+              badge="Promo Offer"
+              title="Starter Site"
+              price="KES 4,999"
+              items={["1-page landing", "WhatsApp CTA", "Secure hosting", "Mobile-friendly"]}
+              ctaHref="https://wa.me/254740123456?text=I%20want%20the%20Starter%20Site%20package%20(KES%204,999)"
+              ctaText="Get Starter"
+            />
+            <PricingCard
+              title="Social Launch"
+              price="KES 5,999"
+              items={["FB/IG/TikTok setup", "Bio link page", "WhatsApp CTA", "Basic brand kit"]}
+              ctaHref="https://wa.me/254740123456?text=I%20want%20the%20Social%20Launch%20package%20(KES%205,999)"
+              ctaText="Start Social"
+            />
+            <PricingCard
+              featured
+              badge="Most Popular"
+              title="Combo: Starter + Social"
+              price="KES 8,999"
+              sub="(save 2,000)"
+              items={["Website + bio link page", "FB/IG/TikTok setup", "WhatsApp CTA everywhere", "Domain setup & SSL"]}
+              ctaHref="https://wa.me/254740123456?text=I%20want%20the%20Combo%20Starter%20%2B%20Social%20package%20(KES%208,999)"
+              ctaText="Get the Combo"
+            />
+            <PricingCard
+              title="Pro Business"
+              price="KES 9,999"
+              items={["Up to 5 pages", "M-Pesa button", "SEO setup", "Analytics"]}
+              ctaHref="https://wa.me/254740123456?text=I%20want%20the%20Pro%20Business%20package%20(KES%209,999)"
+              ctaText="Go Pro"
+            />
+            <PricingCard
+              title="E-Commerce"
+              price="From KES 14,999"
+              items={["Woo/Shopify or custom", "M-Pesa checkout", "WhatsApp chat", "Admin panel"]}
+              ctaHref="https://wa.me/254740123456?text=I%20need%20an%20E-Commerce%20quote"
+              ctaText="Request Quote"
+            />
+          </div>
+
+          <p className="mt-8 text-center text-sm text-slate-600">
+            💡 <span className="font-semibold">Annual domain renewal (your internet name):</span> from KES 1,500/year. All sites include SSL and mobile optimization.
+          </p>
+        </div>
+      </section>
+
+      {/* Why Choose Us */}
+      <section className="py-16 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <Header
+            title="Why Choose Tech24"
+            subtitle="Local understanding + global quality. Built for Kenya from day one."
+          />
+          <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            <Why title="Kenya-First" body="M-Pesa, WhatsApp, .co.ke domains — everything your customers expect." />
+            <Why title="Fast Delivery" body="Most sites go live within 48 hours — move quickly and test the market." />
+            <Why title="Scale Anytime" body="Start with a promo, upgrade to Pro or E-Commerce when you’re ready." />
+            <Why title="Transparent Pricing" body="No surprise fees. Clear quotes and simple maintenance." />
+          </div>
         </div>
       </section>
 
       {/* Contact */}
-      <section id="contact" className="mx-auto max-w-6xl px-4 pb-20">
-        <div className="rounded-3xl bg-slate-900 p-8 text-white md:p-12">
-          <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">Let’s launch your site</h2>
-          <p className="mt-2 max-w-2xl text-slate-300">
-            Tell us about your business and preferred template. We’ll reply the same day.
-          </p>
-          <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-            <a
-              href="https://wa.me/254700000000?text=Hi%20Tech24%2C%20I%27d%20like%20to%20launch%20a%20website."
-              className="inline-flex items-center justify-center rounded-xl bg-emerald-500 px-5 py-3 font-semibold text-white hover:bg-emerald-600"
-            >
-              WhatsApp us
-            </a>
-            <a
-              href="mailto:hello@tech24.co.ke?subject=New%20site%20request"
-              className="inline-flex items-center justify-center rounded-xl border border-white/20 px-5 py-3 font-semibold hover:bg-white/10"
-            >
-              hello@tech24.co.ke
-            </a>
+      <section id="contact" className="bg-slate-900 py-16 text-slate-100 md:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="grid items-center gap-10 md:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-extrabold md:text-4xl">Let’s build something great</h2>
+              <p className="mt-3 text-slate-300">Tell us what you need — we’ll reply on WhatsApp with a simple quote.</p>
+              <div className="mt-8 space-y-4 text-lg">
+                <a
+                  href="https://wa.me/254740123456?text=Hi!%20I%20want%20a%20website%20quote"
+                  className="inline-flex items-center gap-2 rounded-xl bg-emerald-600 px-5 py-3 font-semibold text-white hover:bg-emerald-700"
+                >
+                  WhatsApp: 0740 123 456
+                </a>
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800">@</span>
+                  <a href="mailto:hello@tech24.co.ke" className="hover:underline">hello@tech24.co.ke</a>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800">IG</span>
+                  <a href="https://instagram.com/tech24ke" target="_blank" rel="noopener" className="hover:underline">@tech24ke</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Pseudo-form (no JS handlers) */}
+            <div className="rounded-2xl bg-white/90 p-6 text-slate-800 shadow-[0_10px_30px_rgba(0,0,0,0.08)] backdrop-blur md:p-8">
+              <label className="block text-sm font-medium">Your Name</label>
+              <input type="text" placeholder="John Doe" className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <label className="mt-4 block text-sm font-medium">Business Type</label>
+              <input type="text" placeholder="Salon, Boutique, Restaurant…" className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <label className="mt-4 block text-sm font-medium">What do you need?</label>
+              <textarea rows={4} placeholder="1-page site + WhatsApp CTA, or full shop with M-Pesa…" className="mt-1 w-full rounded-xl border border-slate-300 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500" />
+              <a
+                href="https://wa.me/254740123456?text=Hi!%20I%20need%20a%20quote%20for%20a%20website%20with%20M-Pesa%20and%20WhatsApp"
+                className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700"
+              >
+                Send via WhatsApp
+              </a>
+              <p className="mt-3 text-xs text-slate-500">Submitting opens WhatsApp with your message. No data stored on this site.</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Footer */}
-      <footer className="border-t border-slate-200">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-8 text-sm text-slate-500">
-          <span>© {new Date().getFullYear()} Tech24</span>
-          <div className="flex gap-4">
-            <a href="#services" className="hover:text-slate-700">Services</a>
-            <a href="#templates" className="hover:text-slate-700">Templates</a>
-            <a href="#pricing" className="hover:text-slate-700">Pricing</a>
-            <a href="#contact" className="hover:text-slate-700">Contact</a>
-          </div>
+      <footer className="border-t border-slate-200/70">
+        <div className="mx-auto flex flex-col items-center justify-between gap-4 px-4 py-8 sm:px-6 md:flex-row lg:px-8">
+          <p className="text-sm text-slate-600">© <span>{year}</span> Tech24.co.ke. All rights reserved.</p>
+          <nav className="flex items-center gap-4 text-sm">
+            <a href="#services" className="hover:text-blue-700">Services</a>
+            <a href="#mpesa" className="hover:text-blue-700">M-Pesa</a>
+            <a href="#whatsapp" className="hover:text-blue-700">WhatsApp</a>
+            <a href="#pricing" className="hover:text-blue-700">Packages</a>
+            <a href="#contact" className="hover:text-blue-700">Contact</a>
+          </nav>
         </div>
       </footer>
-    </main>
+    </>
+  );
+}
+
+/* ---- helpers (inline, server-safe) ---- */
+
+function Header({ title, subtitle }: { title: string; subtitle: string }) {
+  return (
+    <div className="mx-auto max-w-2xl text-center">
+      <h2 className="text-3xl font-extrabold md:text-4xl">{title}</h2>
+      <p className="mt-3 text-slate-600">{subtitle}</p>
+    </div>
+  );
+}
+
+function Service({ title, desc }: { title: string; desc: string }) {
+  return (
+    <div className="rounded-2xl border border-slate-200 p-6 transition hover:shadow-[0_10px_30px_rgba(0,0,0,0.08)]">
+      <h3 className="text-lg font-semibold">{title}</h3>
+      <p className="mt-2 text-slate-600">{desc}</p>
+    </div>
+  );
+}
+
+function Card({ title, desc }: { title: string; desc: string }) {
+  return (
+    <div className="rounded-xl border border-slate-200 p-4">
+      <p className="font-semibold">{title}</p>
+      <p className="mt-1 text-slate-600">{desc}</p>
+    </div>
+  );
+}
+
+function Bullet({ color, title, body }: { color: string; title: string; body: string }) {
+  return (
+    <li className="flex items-start gap-3">
+      <span className={`mt-1 h-2.5 w-2.5 rounded-full ${color}`} />
+      <span><span className="font-semibold">{title}</span> {body}</span>
+    </li>
+  );
+}
+
+function Why({ title, body }: { title: string; body: string }) {
+  return (
+    <div className="rounded-2xl border border-slate-200 p-6">
+      <p className="text-lg font-semibold">{title}</p>
+      <p className="mt-2 text-slate-600">{body}</p>
+    </div>
+  );
+}
+
+function PricingCard({
+  badge,
+  featured,
+  title,
+  price,
+  sub,
+  items,
+  ctaHref,
+  ctaText,
+}: {
+  badge?: string;
+  featured?: boolean;
+  title: string;
+  price: string;
+  sub?: string;
+  items: string[];
+  ctaHref: string;
+  ctaText: string;
+}) {
+  return (
+    <div className={`relative rounded-2xl bg-white p-6 shadow-[0_10px_30px_rgba(0,0,0,0.08)] ${featured ? "border-2 border-blue-600" : "border border-slate-200"}`}>
+      {badge ? (
+        <span className={`absolute -top-3 left-4 rounded-full ${featured ? "bg-blue-600" : "bg-orange-600"} px-3 py-1 text-xs font-bold uppercase tracking-wide text-white`}>
+          {badge}
+        </span>
+      ) : null}
+      <h3 className="mt-3 text-xl font-bold">{title}</h3>
+      <p className="mt-1 text-slate-600">
+        {title === "Starter Site"
+          ? "Small businesses & individuals"
+          : title === "Social Launch"
+          ? "Start on Facebook, Instagram & TikTok"
+          : title.includes("Combo")
+          ? "Complete online presence"
+          : title === "Pro Business"
+          ? "SMEs & shops ready to grow"
+          : "Full online shop"}
+      </p>
+      <p className="mt-4 text-3xl font-extrabold">
+        {price} {sub ? <span className="text-base font-semibold text-slate-500">{sub}</span> : null}
+      </p>
+      <ul className="mt-4 space-y-2 text-sm">
+        {items.map((x) => <li key={x}>{x}</li>)}
+      </ul>
+      <a href={ctaHref} className="mt-6 inline-flex w-full items-center justify-center rounded-xl bg-blue-600 px-5 py-3 font-semibold text-white hover:bg-blue-700">
+        {ctaText}
+      </a>
+    </div>
   );
 }
