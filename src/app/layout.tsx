@@ -19,20 +19,15 @@ export const metadata: Metadata = {
     images: [{ url: "/og-cover.png" }],
     type: "website",
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
+  icons: { icon: "/favicon.ico", apple: "/apple-touch-icon.png" },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className} suppressHydrationWarning>
+    <html lang="en" className="h-full" suppressHydrationWarning>
+      {/* Flex column + dynamic viewport height to stop iOS bar jump */}
+      <body className={`${inter.className} min-h-dvh flex flex-col`} suppressHydrationWarning>
+        {/* The page component will take flex-1 so the footer can sit at the bottom */}
         {children}
       </body>
     </html>
