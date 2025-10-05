@@ -300,7 +300,7 @@ export default function Home() {
                   Get your own branded email address like <span className="font-medium">info@yourdomain.co.ke</span> — powered by Zoho Mail. 
                   Access it directly from your Gmail app via IMAP or webmail. Send and receive messages using your business identity, not a generic Gmail.
                 </p>
-                <p className="mt-3 text-sm text-slate-500">Included as redirect in Starter plan • Full mailbox +1,500 KES / year</p>
+                <p className="mt-3 text-sm text-slate-500">Included as redirect in Starter plan • One full mailbox +1,500 KES / year</p>
               </div>
 
             </div>
@@ -343,7 +343,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800">IG</span>
-                    <a href="https://instagram.com/tech24ke" target="_blank" rel="noopener" className="hover:underline">@tech24ke</a>
+                    <a href="https://instagram.com/tech24ke" target="_blank" rel="noopener" className="hover:underline">@tech24kenya</a>
                   </div>
                   <p className="pt-2 text-xs text-slate-400">Clicking WhatsApp opens a chat with a pre-filled message.</p>
                 </div>
