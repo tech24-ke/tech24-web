@@ -291,8 +291,18 @@ export default function Home() {
 
               <p className="mt-8 text-center text-sm text-slate-600">
                 💡 <span className="font-semibold">Annual domain renewal (your internet name):</span> from KES 1,500/year.{" "}
-                Professional email redirect included — 2-way mailbox available for +1,500 KES/year.
+                Professional email redirect (receive-only) included — upgrade to a <span className="font-semibold">two-way professional mailbox</span> for +1,500 KES/year.
               </p>
+
+              <div className="mt-6 mx-auto max-w-2xl rounded-xl border border-slate-200 bg-white p-6 text-center shadow-[0_10px_20px_rgba(0,0,0,0.05)]">
+                <h4 className="text-lg font-semibold text-slate-900">Professional Email with Zoho Mail</h4>
+                <p className="mt-2 text-slate-600 text-sm leading-relaxed">
+                  Get your own branded email address like <span className="font-medium">info@yourdomain.co.ke</span> — powered by Zoho Mail. 
+                  Access it directly from your Gmail app via IMAP or webmail. Send and receive messages using your business identity, not a generic Gmail.
+                </p>
+                <p className="mt-3 text-sm text-slate-500">Included as redirect in Starter plan • Full mailbox +1,500 KES / year</p>
+              </div>
+
             </div>
           </section>
 
