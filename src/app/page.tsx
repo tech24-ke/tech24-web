@@ -69,6 +69,10 @@ export default function Home() {
                 <a href="#whatsapp" className="hover:text-blue-700">WhatsApp CTA</a>
                 <a href="#pricing" className="hover:text-blue-700">Packages</a>
                 <a href="#contact" className="hover:text-blue-700">Contact</a>
+
+                {/* New item */}
+                <a href="/bio" className="hover:text-blue-700">Bio Links</a>
+
                 <a
                   href="#"
                   data-msg="Hi Tech24! I saw your website and need more info."
@@ -77,6 +81,7 @@ export default function Home() {
                   WhatsApp
                 </a>
               </nav>
+
             </div>
           </div>
         </header>
@@ -371,6 +376,16 @@ export default function Home() {
             </nav>
           </div>
         </footer>
+
+
+{/* Floating Bio Links button */}
+<a
+  href="/bio"
+  className="fixed bottom-5 right-5 z-50 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-blue-700"
+>
+  🔗 Bio Links
+</a>
+
       </div>
     </>
   );
