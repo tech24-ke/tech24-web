@@ -7,7 +7,7 @@ export default function BioLinks() {
       </p>
 
       <div className="space-y-3 mt-6">
-        {/* Existing café demo */}
+        {/* Café demo */}
         <a
           href="https://cafe.tech24.co.ke"
           className="block rounded-xl bg-orange-600 text-white py-3 font-medium hover:bg-orange-700"
@@ -15,7 +15,7 @@ export default function BioLinks() {
           ☕ DineEasy Café Demo
         </a>
 
-        {/* New demos */}
+        {/* Salon */}
         <a
           href="https://salon.tech24.co.ke"
           className="block rounded-xl bg-pink-600 text-white py-3 font-medium hover:bg-pink-700"
@@ -23,6 +23,7 @@ export default function BioLinks() {
           💇‍♀️ Salon Demo
         </a>
 
+        {/* Shop */}
         <a
           href="https://shop.tech24.co.ke"
           className="block rounded-xl bg-green-600 text-white py-3 font-medium hover:bg-green-700"
@@ -30,11 +31,20 @@ export default function BioLinks() {
           🛍️ Shop Demo
         </a>
 
+        {/* Event */}
         <a
           href="https://event.tech24.co.ke"
           className="block rounded-xl bg-purple-600 text-white py-3 font-medium hover:bg-purple-700"
         >
           🎉 Event Planning Demo
+        </a>
+
+        {/* NEW: My BNB Manager */}
+        <a
+          href="https://bnb.tech24.co.ke"
+          className="block rounded-xl bg-cyan-600 text-white py-3 font-medium hover:bg-cyan-700"
+        >
+          🏠 My BNB Manager Demo
         </a>
 
         {/* Main site + WhatsApp */}
