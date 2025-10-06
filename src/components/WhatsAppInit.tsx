@@ -1,39 +1,46 @@
-// src/components/WhatsAppInit.tsx
 "use client";
-
 import { useEffect, useRef } from "react";
-import { whatsappLink } from "@/lib/whatsapp";
 
-// Default pool (round-robin) — replace later with real numbers if needed
-const DEFAULT_NUMBERS = [
-  "254748699460",  // Terry (KE)
-  "32465603546",   // Joy (BE) - digits only, no +
-];
+// Default round-robin pool (you can change/order anytime)
+const DEFAULT_NUMBERS = ["254748699460", "32465603546"];
+
+function buildLink(number: string, text?: string) {
+  const n = number.replace(/\D/g, "");
+  const msg = text ? encodeURIComponent(text) : "";
+  return `https://wa.me/${n}${msg ? `?text=${msg}` : ""}`;
+}
 
 export default function WhatsAppInit() {
-  const rrIndex = useRef(0);
+  const rr = useRef(0);
 
   useEffect(() => {
-    const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("a.wa-rr"));
-    links.forEach((a) => {
-      // Allow overrides via data-number or data-numbers (comma-separated)
-      const single = a.getAttribute("data-number")?.trim();
-      const listAttr = a.getAttribute("data-numbers")?.trim();
-      const pool = single
-        ? [single]
-        : listAttr
-        ? listAttr.split(",").map((x) => x.trim()).filter(Boolean)
-        : DEFAULT_NUMBERS;
+    const wireAll = () => {
+      const links = Array.from(document.querySelectorAll<HTMLAnchorElement>("a.wa-rr"));
+      links.forEach((a) => {
+        const single = a.getAttribute("data-wa")?.trim();
+        const poolAttr = a.getAttribute("data-numbers")?.trim();
+        const pool = single
+          ? [single]
+          : poolAttr
+          ? poolAttr.split(",").map((x) => x.trim()).filter(Boolean)
+          : DEFAULT_NUMBERS;
 
-      // Compose message
-      const msg = a.getAttribute("data-msg") || "Hi Tech24! I want a website.";
-      const number = pool[rrIndex.current % pool.length];
-      rrIndex.current += 1;
+        const idx = rr.current++ % pool.length;
+        const msg = a.getAttribute("data-msg") || `Hi Tech24!`;
+        a.href = buildLink(pool[idx], msg);
+        a.target = "_blank";
+        a.rel = "noreferrer";
+      });
+    };
 
-      a.href = whatsappLink(number, msg);
-      a.target = "_blank";
-      a.rel = "noreferrer";
-    });
+    // Initial run
+    wireAll();
+
+    // Re-wire if new nodes appear (TemplateShowcase etc.)
+    const mo = new MutationObserver(wireAll);
+    mo.observe(document.body, { childList: true, subtree: true });
+
+    return () => mo.disconnect();
   }, []);
 
   return null;

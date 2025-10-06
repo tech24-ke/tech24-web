@@ -27,32 +27,7 @@ export default function Home() {
         })}
       </Script>
 
-      {/* WhatsApp round-robin (Joy ↔ Terry). Override with data-wa when needed */}
-      <Script id="wa-round-robin" strategy="afterInteractive">
-        {`
-(function(){
-  const reps = [
-    { name: 'Joy',   wa: '32465603546'  },
-    { name: 'Terry', wa: '254748699460' }
-  ];
-  const KEY='wa_rr_index_v1', BRAND='Tech24';
-  function nextRep(){ const i=parseInt(localStorage.getItem(KEY)||'0',10); localStorage.setItem(KEY,String(i+1)); return reps[i%reps.length]; }
-  function buildMsg(custom){
-    const utm=[...new URLSearchParams(location.search).entries()].map(([k,v])=>k+'='+v).join('&');
-    const base=(custom&&custom.trim())?custom.trim():\`Hi \${BRAND}! I'm on "\${document.title}" | URL: \${location.href}\`;
-    return encodeURIComponent([base, utm?('UTM: '+utm):null].filter(Boolean).join(' | '));
-  }
-  function wire(a){
-    const override=a.getAttribute('data-wa');
-    const rep=override?{wa:override}:nextRep();
-    a.href='https://wa.me/'+rep.wa+'?text='+buildMsg(a.getAttribute('data-msg')||'');
-    a.title='Chat on WhatsApp';
-  }
-  function init(){ document.querySelectorAll('a.wa-rr').forEach(a=>{ wire(a); a.addEventListener('click',()=>wire(a),{passive:true}); }); }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',init); else init();
-})();
-        `}
-      </Script>
+      
 
       {/* PAGE WRAPPER: safe viewport height + column; footer uses mt-auto */}
       <div className="min-h-[100svh] flex flex-col overflow-x-hidden">
