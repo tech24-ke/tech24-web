@@ -1,4 +1,9 @@
+"use client";
+
 import Script from "next/script";
+import Image from "next/image";
+import Link from "next/link";
+import TemplateShowcase from "@/components/TemplateShowcase";
 
 export default function Home() {
   const year = new Date().getFullYear();
@@ -129,6 +134,9 @@ export default function Home() {
             </div>
           </section>
 
+          {/* Templates Showcase */}
+          <TemplateShowcase />
+
           {/* Services */}
           <section id="services" className="py-16 md:py-24">
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -229,7 +237,6 @@ export default function Home() {
             <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
               <Header title="Our Packages" subtitle="Start small, grow fast. Transparent pricing, no hidden fees." />
 
-              {/* items-stretch ensures equal heights when children are h-full */}
               <div className="mt-12 grid items-stretch gap-6 md:grid-cols-2 lg:grid-cols-3">
                 <PricingCard
                   badge="Promo Offer"
@@ -302,7 +309,6 @@ export default function Home() {
                 </p>
                 <p className="mt-3 text-sm text-slate-500">Included as redirect in Starter plan • One full mailbox +1,500 KES / year</p>
               </div>
-
             </div>
           </section>
 
@@ -343,7 +349,7 @@ export default function Home() {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="inline-flex h-9 w-9 items-center justify-center rounded-xl bg-slate-800">IG</span>
-                    <a href="https://instagram.com/tech24ke" target="_blank" rel="noopener" className="hover:underline">@tech24kenya</a>
+                    <a href="https://instagram.com/tech24kenya" target="_blank" rel="noopener" className="hover:underline">@tech24kenya</a>
                   </div>
                   <p className="pt-2 text-xs text-slate-400">Clicking WhatsApp opens a chat with a pre-filled message.</p>
                 </div>
