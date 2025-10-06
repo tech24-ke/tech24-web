@@ -30,21 +30,22 @@ const TEMPLATES: Template[] = [
     thumb: "/templates/salon.jpg",
   },
   {
-    key: "food",
-    name: "Fast Food",
+    key: "shop",
+    name: "Shop / Retail",
     tagline: "Quick order links, hero promo",
-    demoUrl: "https://food.tech24.co.ke",
-    thumb: "/templates/food.jpg",
+    demoUrl: "https://shop.tech24.co.ke",
+    thumb: "/templates/shop.jpg",
   },
   {
-    key: "homes",
-    name: "Real Estate",
-    tagline: "Listings cards + map links",
-    demoUrl: "https://homes.tech24.co.ke",
-    thumb: "/templates/homes.jpg",
+    key: "event",
+    name: "Event Planning",
+    tagline: "Gallery, packages, booking CTA",
+    demoUrl: "https://event.tech24.co.ke",
+    thumb: "/templates/event.jpg",
     badge: "Coming soon",
   },
 ];
+
 
 export default function TemplateShowcase() {
   return (
@@ -83,9 +84,16 @@ export default function TemplateShowcase() {
                 priority={t.key === "cafe"}
               />
               {t.badge && (
-                <span className="absolute left-3 top-3 rounded-full bg-black/70 px-2 py-1 text-xs text-white">
-                  {t.badge}
-                </span>
+                <span
+  className={`absolute top-2 left-2 text-xs font-semibold px-2 py-1 rounded-full shadow-sm ${
+    t.badge === "Coming soon"
+      ? "bg-neutral-700/80 text-white"
+      : "bg-white/90 text-gray-900"
+  }`}
+>
+  {t.badge}
+</span>
+
               )}
             </div>
 
