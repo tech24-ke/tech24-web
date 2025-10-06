@@ -3,6 +3,12 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import type { Metadata } from "next";
 
+// Use ONE of these imports depending on your setup:
+// If you have baseUrl/path alias set to "src" in tsconfig:
+// import WhatsAppInit from "@/components/WhatsAppInit";
+// Otherwise use a relative path:
+import WhatsAppInit from "../components/WhatsAppInit";
+
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -25,9 +31,9 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className="h-full" suppressHydrationWarning>
-      {/* Flex column + dynamic viewport height to stop iOS bar jump */}
       <body className={`${inter.className} min-h-dvh flex flex-col`} suppressHydrationWarning>
-        {/* The page component will take flex-1 so the footer can sit at the bottom */}
+        {/* Client-only initializer — does not affect layout or SEO */}
+        <WhatsAppInit />
         {children}
       </body>
     </html>
