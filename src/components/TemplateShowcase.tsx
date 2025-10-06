@@ -49,7 +49,8 @@ const TEMPLATES: Template[] = [
 
 export default function TemplateShowcase() {
   return (
-    <section className="mx-auto max-w-7xl px-4 py-16 md:py-24">
+    <section id="templates"
+    className="mx-auto max-w-7xl px-4 py-16 md:py-24">
       <div className="mb-8 flex items-center justify-between">
         <div>
           <h2 className="text-3xl font-extrabold tracking-tight md:text-4xl">
@@ -66,6 +67,7 @@ export default function TemplateShowcase() {
           See Pricing
         </Link>
       </div>
+
 
       <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {TEMPLATES.map((t) => (
