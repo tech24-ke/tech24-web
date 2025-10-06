@@ -4,9 +4,11 @@ import Script from "next/script";
 import Image from "next/image";
 import Link from "next/link";
 import TemplateShowcase from "@/components/TemplateShowcase";
+import { useState } from "react";
 
 export default function Home() {
   const year = new Date().getFullYear();
+  const [menuOpen, setMenuOpen] = useState(false);
 
   return (
     <>
@@ -63,16 +65,14 @@ export default function Home() {
                 <img src="/logo.png" alt="Tech24 logo" className="h-8 w-8 rounded-lg object-contain" />
                 <span className="font-semibold text-slate-900">Tech24.co.ke</span>
               </a>
+              {/* Right side nav */}
               <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
                 <a href="#services" className="hover:text-blue-700">Services</a>
                 <a href="#mpesa" className="hover:text-blue-700">M-Pesa</a>
                 <a href="#whatsapp" className="hover:text-blue-700">WhatsApp CTA</a>
                 <a href="#pricing" className="hover:text-blue-700">Packages</a>
                 <a href="#contact" className="hover:text-blue-700">Contact</a>
-
-                {/* New item */}
                 <a href="/bio" className="hover:text-blue-700">Bio Links</a>
-
                 <a
                   href="#"
                   data-msg="Hi Tech24! I saw your website and need more info."
@@ -82,9 +82,44 @@ export default function Home() {
                 </a>
               </nav>
 
+              {/* Mobile hamburger */}
+              <button
+                onClick={() => setMenuOpen((v) => !v)}
+                aria-label="Open menu"
+                className="md:hidden inline-flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200"
+              >
+                <span className="block h-0.5 w-5 bg-slate-900" />
+                <span className="block h-0.5 w-5 bg-slate-900 mt-1.5" />
+                <span className="block h-0.5 w-5 bg-slate-900 mt-1.5" />
+              </button>
+
+
             </div>
           </div>
+
+          {/* Mobile menu panel */}
+          <div className={`${menuOpen ? "block" : "hidden"} md:hidden border-t border-slate-200 bg-white`}>
+            <div className="mx-auto max-w-7xl px-4 py-3 text-sm">
+              <div className="flex flex-col gap-3">
+                <a href="#services" onClick={()=>setMenuOpen(false)} className="py-1">Services</a>
+                <a href="#mpesa" onClick={()=>setMenuOpen(false)} className="py-1">M-Pesa</a>
+                <a href="#whatsapp" onClick={()=>setMenuOpen(false)} className="py-1">WhatsApp CTA</a>
+                <a href="#pricing" onClick={()=>setMenuOpen(false)} className="py-1">Packages</a>
+                <a href="#contact" onClick={()=>setMenuOpen(false)} className="py-1">Contact</a>
+                <a href="/bio" onClick={()=>setMenuOpen(false)} className="py-1 font-medium text-blue-700">Bio Links</a>
+                <a
+                  href="#"
+                  data-msg="Hi Tech24! I saw your website and need more info."
+                  className="wa-rr mt-2 inline-flex items-center justify-center rounded-xl bg-blue-600 px-4 py-2 font-semibold text-white"
+                >
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </div>
+
         </header>
+
 
         {/* MAIN */}
         <main>
@@ -367,13 +402,17 @@ export default function Home() {
         <footer className="mt-auto border-t border-slate-200/70">
           <div className="mx-auto flex flex-col items-center justify-between gap-4 px-4 py-8 sm:px-6 md:flex-row lg:px-8">
             <p className="text-sm text-slate-600">© <span>{year}</span> Tech24.co.ke. All rights reserved.</p>
-            <nav className="flex items-center gap-4 text-sm">
-              <a href="#services" className="hover:text-blue-700">Services</a>
-              <a href="#mpesa" className="hover:text-blue-700">M-Pesa</a>
-              <a href="#whatsapp" className="hover:text-blue-700">WhatsApp</a>
-              <a href="#pricing" className="hover:text-blue-700">Packages</a>
-              <a href="#contact" className="hover:text-blue-700">Contact</a>
-            </nav>
+            <div className="-mx-4 w-screen max-w-none overflow-x-auto px-4 md:m-0 md:w-auto md:overflow-visible">
+              <nav className="flex items-center gap-4 whitespace-nowrap text-sm">
+                <a href="#services" className="hover:text-blue-700">Services</a>
+                <a href="#mpesa" className="hover:text-blue-700">M-Pesa</a>
+                <a href="#whatsapp" className="hover:text-blue-700">WhatsApp</a>
+                <a href="#pricing" className="hover:text-blue-700">Packages</a>
+                <a href="#contact" className="hover:text-blue-700">Contact</a>
+                <a href="/bio" className="hover:text-blue-700">Bio Links</a>
+              </nav>
+            </div>
+
           </div>
         </footer>
 
@@ -381,10 +420,11 @@ export default function Home() {
 {/* Floating Bio Links button */}
 <a
   href="/bio"
-  className="fixed bottom-5 right-5 z-50 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-blue-700"
+  className="hidden md:inline-flex fixed bottom-5 right-5 z-50 rounded-full bg-blue-600 px-4 py-2 text-sm font-semibold text-white shadow-lg hover:bg-blue-700"
 >
   🔗 Bio Links
 </a>
+
 
       </div>
     </>
