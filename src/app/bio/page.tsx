@@ -1,4 +1,4 @@
--export default function BioLinks() {
+export default function BioLinks() {
   return (
     <main className="mx-auto max-w-md p-6 text-center space-y-4">
       <h1 className="text-2xl font-bold">Tech24 Kenya</h1>
