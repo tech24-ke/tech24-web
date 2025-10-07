@@ -1,4 +1,4 @@
-export default function BioLinks() {
+-export default function BioLinks() {
   return (
     <main className="mx-auto max-w-md p-6 text-center space-y-4">
       <h1 className="text-2xl font-bold">Tech24 Kenya</h1>
@@ -47,12 +47,20 @@ export default function BioLinks() {
           🏠 My BNB Manager Demo
         </a>
 
-        {/* NEW: Law Firm */}
+        {/* Law Firm */}
         <a
           href="https://law.tech24.co.ke"
           className="block rounded-xl bg-slate-800 text-white py-3 font-medium hover:bg-slate-900"
         >
           ⚖️ Law Firm Demo
+        </a>
+
+        {/* Real Estate */}
+        <a
+          href="https://realestate.tech24.co.ke"
+          className="block rounded-xl bg-amber-600 text-white py-3 font-medium hover:bg-amber-700"
+        >
+          🏡 Real Estate Demo
         </a>
 
         {/* Main site + WhatsApp */}
