@@ -23,6 +23,14 @@ export default function BioLinks() {
           💇‍♀️ Salon Demo
         </a>
 
+        {/* Spa */}
+        <a
+          href="https://spa.tech24.co.ke"
+          className="block rounded-xl bg-rose-600 text-white py-3 font-medium hover:bg-rose-700"
+        >
+          🌸 Spa Lounge Demo
+        </a>
+
         {/* Shop */}
         <a
           href="https://shop.tech24.co.ke"
