@@ -63,6 +63,14 @@ export default function BioLinks() {
           🏡 Real Estate Demo
         </a>
 
+        {/* Medical */}
+        <a
+          href="https://medical.tech24.co.ke"
+          className="block rounded-xl bg-teal-700 text-white py-3 font-medium hover:bg-teal-800"
+        >
+          🏥 Aurora Medical Clinic Demo
+        </a>
+
         {/* Main site + WhatsApp */}
         <a
           href="https://tech24.co.ke"
