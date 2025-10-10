@@ -87,6 +87,14 @@ export default function BioLinks() {
           🎓 Bright Mind Tutors Demo
         </a>
 
+        {/* Construction */}
+        <a
+          href="https://construction.tech24.co.ke"
+          className="block rounded-xl bg-yellow-600 text-white py-3 font-medium hover:bg-yellow-700"
+        >
+          🏗️ BuildRight Contractors Demo
+        </a>
+
         {/* Main site + WhatsApp */}
         <a
           href="https://tech24.co.ke"
