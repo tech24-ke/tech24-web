@@ -101,6 +101,14 @@ export default function BioLinks() {
         >
           💬 Chat on WhatsApp
         </a>
+
+        {/* Real client */}
+        <a
+          href="https://freshagro.co.ke"
+          className="block rounded-xl bg-lime-600 text-white py-3 font-medium hover:bg-lime-700"
+        >
+          🥔 FreshAgro.co.ke (Client)
+        </a>
       </div>
     </main>
   );
