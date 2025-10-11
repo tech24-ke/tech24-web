@@ -95,20 +95,28 @@ export default function BioLinks() {
           🏗️ BuildRight Contractors Demo
         </a>
 
+        {/* Fitness */}
+        <a
+          href="https://fitness.tech24.co.ke"
+          className="block rounded-xl bg-emerald-600 text-white py-3 font-medium hover:bg-emerald-700"
+        >
+          💪 Fitness Hub Demo
+        </a>
+
+        {/* Photography */}
+        <a
+          href="https://photo.tech24.co.ke"
+          className="block rounded-xl bg-gray-700 text-white py-3 font-medium hover:bg-gray-800"
+        >
+          📸 LensCraft Studio Demo
+        </a>
+
         {/* Tech24 Main Site */}
         <a
           href="https://tech24.co.ke"
           className="block rounded-xl bg-blue-600 text-white py-3 font-medium hover:bg-blue-700"
         >
           🌐 Visit Tech24.co.ke
-        </a>
-
-         {/* Fitness Demo */}
-        <a
-          href="https://fitness.tech24.co.ke"
-          className="block rounded-xl bg-emerald-600 text-white py-3 font-medium hover:bg-emerald-700"
-        >
-          💪 Fitness Hub Demo
         </a>
 
         {/* WhatsApp */}
@@ -119,15 +127,13 @@ export default function BioLinks() {
           💬 Chat on WhatsApp
         </a>
 
-        {/* Real client */}
+        {/* Real client (only one after WhatsApp) */}
         <a
           href="https://freshagro.co.ke"
           className="block rounded-xl bg-lime-600 text-white py-3 font-medium hover:bg-lime-700"
         >
           🥔 FreshAgro.co.ke (Client)
         </a>
-
-       
       </div>
     </main>
   );

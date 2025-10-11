@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import TemplateShowcase from "@/components/TemplateShowcase";
 import { useState } from "react";
+import { site } from "@/site.config";
 
 export default function Home() {
   const year = new Date().getFullYear();
