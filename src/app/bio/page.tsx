@@ -103,6 +103,14 @@ export default function BioLinks() {
           🌐 Visit Tech24.co.ke
         </a>
 
+         {/* Fitness Demo */}
+        <a
+          href="https://fitness.tech24.co.ke"
+          className="block rounded-xl bg-emerald-600 text-white py-3 font-medium hover:bg-emerald-700"
+        >
+          💪 Fitness Hub Demo
+        </a>
+
         {/* WhatsApp */}
         <a
           href="https://wa.me/254748699460"
@@ -119,13 +127,7 @@ export default function BioLinks() {
           🥔 FreshAgro.co.ke (Client)
         </a>
 
-        {/* Fitness Demo */}
-        <a
-          href="https://fitness.tech24.co.ke"
-          className="block rounded-xl bg-emerald-600 text-white py-3 font-medium hover:bg-emerald-700"
-        >
-          💪 Fitness Hub Demo
-        </a>
+       
       </div>
     </main>
   );
